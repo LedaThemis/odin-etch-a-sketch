@@ -1,12 +1,14 @@
 createGrids(16); // initial grid
 
-const grid = document.querySelectorAll(".grid-block");
-
-grid.forEach((block) => block.addEventListener("mouseover", onHover));
-
 const clearButton = document.querySelector("#clear-button");
-
 clearButton.addEventListener("click", handleClearButtonClick);
+
+function startSketch(n) {
+  createGrids(n);
+
+  const grid = document.querySelectorAll(".grid-block");
+  grid.forEach((block) => block.addEventListener("mouseover", onHover));
+}
 
 function createGrids(n) {
   const gridContainer = document.querySelector("#grid-container");
