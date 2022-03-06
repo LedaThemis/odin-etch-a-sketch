@@ -8,15 +8,15 @@ function createGrids(n) {
     row.classList.add("grid-row");
 
     for (let j = 1; j <= n; j++) {
-      let grid = document.createElement("div");
+      let block = document.createElement("div");
 
-      grid.id = `grid-${j + i * 16 - 16}`;
-      grid.classList.add("grid-block");
-      grid.style.width = `${gridSize}px`;
-      grid.style.height = `${gridSize}px`;
-      grid.style.border = "1px solid grey";
+      block.id = `grid-${j + i * 16 - 16}`;
+      block.classList.add("grid-block");
+      block.style.width = `${gridSize}px`;
+      block.style.height = `${gridSize}px`;
+      block.style.border = "1px solid grey";
 
-      row.appendChild(grid);
+      row.appendChild(block);
     }
 
     gridContainer.appendChild(row);
