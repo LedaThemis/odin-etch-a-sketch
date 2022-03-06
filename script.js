@@ -3,6 +3,8 @@ startSketch(16); // initial grid
 const clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", handleClearButtonClick);
 
+const colorValues = {};
+
 function startSketch(n) {
   createGrids(n);
 
@@ -39,8 +41,13 @@ function createGrids(n) {
 function onHover(e) {
   if (e.target.style.backgroundColor === "") {
     e.target.style.backgroundColor = randomRGB();
+
+    colorValues[e.target.id] = {
+      rgb: e.target.style.backgroundColor,
+      times: 1,
+    };
   } else {
-    e.target.style.backgroundColor = darkenRGB(e.target.style.backgroundColor);
+    e.target.style.backgroundColor = darkenRGB(e.target.id);
   }
 }
 
@@ -65,10 +72,21 @@ function randomRGB() {
   return `rgb(${r},${g},${b})`;
 }
 
-function darkenRGB(rgb) {
+function darkenRGB(gridID) {
+  let rgb = colorValues[gridID].rgb;
+  let times = colorValues[gridID].times;
+
+  if (times >= 10) {
+    return "rgb(0,0,0)";
+  }
+
   rgb = rgb.replace(/[^\d,]/g, "").split(",");
-  const r = parseInt(rgb[0]) * 0.9;
-  const g = parseInt(rgb[1]) * 0.9;
-  const b = parseInt(rgb[2]) * 0.9;
+
+  const r = parseInt(rgb[0]) * (1 - times * 0.1);
+  const g = parseInt(rgb[1]) * (1 - times * 0.1);
+  const b = parseInt(rgb[2]) * (1 - times * 0.1);
+
+  colorValues[gridID].times += 1;
+
   return `rgb(${r},${g},${b})`;
 }
