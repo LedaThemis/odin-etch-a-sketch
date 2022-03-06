@@ -23,4 +23,12 @@ function createGrids(n) {
   }
 }
 
-createGrids(16);
+createGrids(100);
+
+const grid = document.querySelectorAll(".grid-block");
+
+grid.forEach((block) => block.addEventListener("mouseover", onHover));
+
+function onHover(e) {
+  e.target.style.backgroundColor = "black";
+}
