@@ -52,3 +52,11 @@ function handleClearButtonClick(e) {
   );
   startSketch(parseInt(selectedSize));
 }
+
+function randomRGB() {
+  const random256 = () => Math.floor(Math.random() * 256);
+  const r = random256();
+  const g = random256();
+  const b = random256();
+  return `rgb(${r},${g},${b})`;
+}
