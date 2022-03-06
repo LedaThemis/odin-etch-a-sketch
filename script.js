@@ -1,4 +1,4 @@
-createGrids(16); // initial grid
+startSketch(16); // initial grid
 
 const clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", handleClearButtonClick);
