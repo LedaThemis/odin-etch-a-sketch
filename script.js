@@ -46,9 +46,9 @@ function handleClearButtonClick(e) {
     selectedSize = prompt("Input Desired Grid Size: (Max Size: 100)");
   } while (
     parseInt(selectedSize) > 100 ||
+    isNaN(parseInt(selectedSize)) ||
     selectedSize === null ||
     selectedSize === ""
   );
-  console.log(selectedSize);
-  createGrids(parseInt(selectedSize));
+  startSketch(parseInt(selectedSize));
 }
