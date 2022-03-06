@@ -37,7 +37,11 @@ function createGrids(n) {
 }
 
 function onHover(e) {
-  e.target.style.backgroundColor = "black";
+  if (e.target.style.backgroundColor === "") {
+    e.target.style.backgroundColor = randomRGB();
+  } else {
+    e.target.style.backgroundColor = darkenRGB(e.target.style.backgroundColor);
+  }
 }
 
 function handleClearButtonClick(e) {
@@ -58,5 +62,13 @@ function randomRGB() {
   const r = random256();
   const g = random256();
   const b = random256();
+  return `rgb(${r},${g},${b})`;
+}
+
+function darkenRGB(rgb) {
+  rgb = rgb.replace(/[^\d,]/g, "").split(",");
+  const r = parseInt(rgb[0]) * 0.9;
+  const g = parseInt(rgb[1]) * 0.9;
+  const b = parseInt(rgb[2]) * 0.9;
   return `rgb(${r},${g},${b})`;
 }
