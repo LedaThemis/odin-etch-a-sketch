@@ -1,5 +1,6 @@
 function createGrids(n) {
   const gridContainer = document.querySelector("#grid-container");
+  gridContainer.innerText = "";
   const gridSize = 960 / n;
 
   for (let i = 1; i <= n; i++) {
@@ -23,7 +24,7 @@ function createGrids(n) {
   }
 }
 
-createGrids(100);
+createGrids(16);
 
 const grid = document.querySelectorAll(".grid-block");
 
@@ -31,4 +32,16 @@ grid.forEach((block) => block.addEventListener("mouseover", onHover));
 
 function onHover(e) {
   e.target.style.backgroundColor = "black";
+}
+
+const clearButton = document.querySelector("#clear-button");
+
+clearButton.addEventListener("click", handleClearButtonClick);
+
+function handleClearButtonClick(e) {
+  let selectedSize = 16;
+  do {
+    selectedSize = prompt("Input Desired Grid Size: (Max Size: 100)");
+  } while (parseInt(selectedSize) > 100);
+  createGrids(parseInt(selectedSize));
 }

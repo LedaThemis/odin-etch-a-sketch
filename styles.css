@@ -1,4 +1,11 @@
-.grid-container {
+#container {
+  display: flex;
+  gap: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+#grid-container {
   display: flex;
   flex-direction: column;
 }
@@ -14,4 +21,9 @@
   -webkit-box-sizing: border-box;
 
   display: inline-block;
+}
+
+#clear-button {
+  height: 30px;
+  width: 80px;
 }
