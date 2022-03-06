@@ -12,6 +12,7 @@ function createGrids(n) {
       grid.classList.add("grid-block");
       grid.style.width = "16px";
       grid.style.height = "16px";
+      grid.style.border = "1px solid grey";
 
       row.appendChild(grid);
     }
