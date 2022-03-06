@@ -3,7 +3,7 @@ startSketch(16); // initial grid
 const clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", handleClearButtonClick);
 
-const colorValues = {};
+const colorValues = {}; // object to store initial color values
 
 function startSketch(n) {
   createGrids(n);
