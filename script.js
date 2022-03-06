@@ -1,6 +1,6 @@
 function createGrids(n) {
   const gridContainer = document.querySelector("#grid-container");
-  gridContainer.innerText = "";
+  gridContainer.replaceChildren();
   const gridSize = 960 / n;
 
   for (let i = 1; i <= n; i++) {
