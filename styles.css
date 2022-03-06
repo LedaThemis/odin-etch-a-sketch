@@ -1,6 +1,18 @@
+.grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-row {
+  margin: 0;
+  display: flex;
+}
+
 .grid-block {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: 1px solid grey;
+
+  display: inline-block;
 }
