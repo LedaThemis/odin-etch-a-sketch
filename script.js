@@ -1,3 +1,13 @@
+createGrids(16); // initial grid
+
+const grid = document.querySelectorAll(".grid-block");
+
+grid.forEach((block) => block.addEventListener("mouseover", onHover));
+
+const clearButton = document.querySelector("#clear-button");
+
+clearButton.addEventListener("click", handleClearButtonClick);
+
 function createGrids(n) {
   const gridContainer = document.querySelector("#grid-container");
   gridContainer.replaceChildren();
@@ -24,24 +34,19 @@ function createGrids(n) {
   }
 }
 
-createGrids(16);
-
-const grid = document.querySelectorAll(".grid-block");
-
-grid.forEach((block) => block.addEventListener("mouseover", onHover));
-
 function onHover(e) {
   e.target.style.backgroundColor = "black";
 }
 
-const clearButton = document.querySelector("#clear-button");
-
-clearButton.addEventListener("click", handleClearButtonClick);
-
 function handleClearButtonClick(e) {
-  let selectedSize = 16;
+  let selectedSize;
   do {
     selectedSize = prompt("Input Desired Grid Size: (Max Size: 100)");
-  } while (parseInt(selectedSize) > 100);
+  } while (
+    parseInt(selectedSize) > 100 ||
+    selectedSize === null ||
+    selectedSize === ""
+  );
+  console.log(selectedSize);
   createGrids(parseInt(selectedSize));
 }
