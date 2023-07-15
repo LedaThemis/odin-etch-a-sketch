@@ -1,35 +1,35 @@
 startSketch(16); // initial grid
 
-const clearButton = document.querySelector("#clear-button");
-clearButton.addEventListener("click", handleClearButtonClick);
+const clearButton = document.querySelector('#clear-button');
+clearButton.addEventListener('click', handleClearButtonClick);
 
 const colorValues = {}; // object to store initial color values
 
 function startSketch(n) {
   createGrids(n);
 
-  const grid = document.querySelectorAll(".grid-block");
-  grid.forEach((block) => block.addEventListener("mouseover", onHover));
+  const grid = document.querySelectorAll('.grid-block');
+  grid.forEach((block) => block.addEventListener('mouseover', onHover));
 }
 
 function createGrids(n) {
-  const gridContainer = document.querySelector("#grid-container");
+  const gridContainer = document.querySelector('#grid-container');
   gridContainer.replaceChildren();
   const gridSize = 960 / n;
 
   for (let i = 1; i <= n; i++) {
-    let row = document.createElement("div");
+    let row = document.createElement('div');
     row.id = `row-${i}`;
-    row.classList.add("grid-row");
+    row.classList.add('grid-row');
 
     for (let j = 1; j <= n; j++) {
-      let block = document.createElement("div");
+      let block = document.createElement('div');
 
       block.id = `grid-${j + i * 16 - 16}`;
-      block.classList.add("grid-block");
+      block.classList.add('grid-block');
       block.style.width = `${gridSize}px`;
       block.style.height = `${gridSize}px`;
-      block.style.border = "1px solid grey";
+      block.style.border = '1px solid grey';
 
       row.appendChild(block);
     }
@@ -39,7 +39,7 @@ function createGrids(n) {
 }
 
 function onHover(e) {
-  if (e.target.style.backgroundColor === "") {
+  if (e.target.style.backgroundColor === '') {
     e.target.style.backgroundColor = randomRGB();
 
     colorValues[e.target.id] = {
@@ -54,13 +54,8 @@ function onHover(e) {
 function handleClearButtonClick(e) {
   let selectedSize;
   do {
-    selectedSize = prompt("Input Desired Grid Size: (Max Size: 100)");
-  } while (
-    parseInt(selectedSize) > 100 ||
-    isNaN(parseInt(selectedSize)) ||
-    selectedSize === null ||
-    selectedSize === ""
-  );
+    selectedSize = prompt('Input Desired Grid Size: (Max Size: 100)');
+  } while (parseInt(selectedSize) > 100 || isNaN(parseInt(selectedSize)) || selectedSize === null || selectedSize === '');
   startSketch(parseInt(selectedSize));
 }
 
@@ -77,10 +72,10 @@ function darkenRGB(gridID) {
   let times = colorValues[gridID].times;
 
   if (times >= 10) {
-    return "rgb(0,0,0)";
+    return 'rgb(0,0,0)';
   }
 
-  rgb = rgb.replace(/[^\d,]/g, "").split(",");
+  rgb = rgb.replace(/[^\d,]/g, '').split(',');
 
   const r = parseInt(rgb[0]) * (1 - times * 0.1);
   const g = parseInt(rgb[1]) * (1 - times * 0.1);
