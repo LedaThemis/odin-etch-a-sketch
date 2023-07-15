@@ -15,26 +15,23 @@ function startSketch(n) {
 function createGrids(n) {
   const gridContainer = document.querySelector('#grid-container');
   gridContainer.replaceChildren();
+
   const gridSize = 960 / n;
+  const gridsCount = n * n;
 
-  for (let i = 1; i <= n; i++) {
-    let row = document.createElement('div');
-    row.id = `row-${i}`;
-    row.classList.add('grid-row');
+  gridContainer.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
+  gridContainer.style.gridTemplateRows = `repeat(${n}, 1fr)`;
 
-    for (let j = 1; j <= n; j++) {
-      let block = document.createElement('div');
+  for (let i = 1; i <= gridsCount; i++) {
+    let block = document.createElement('div');
 
-      block.id = `grid-${j + i * 16 - 16}`;
-      block.classList.add('grid-block');
-      block.style.width = `${gridSize}px`;
-      block.style.height = `${gridSize}px`;
-      block.style.border = '1px solid grey';
+    block.id = `grid-${i}`;
+    block.classList.add('grid-block');
+    block.style.width = `${gridSize}px`;
+    block.style.height = `${gridSize}px`;
+    block.style.border = '1px solid grey';
 
-      row.appendChild(block);
-    }
-
-    gridContainer.appendChild(row);
+    gridContainer.appendChild(block);
   }
 }
 
